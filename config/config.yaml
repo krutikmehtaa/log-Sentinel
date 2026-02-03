@@ -1,0 +1,93 @@
+# Anomaly Detection System Configuration
+
+# Database Configuration
+database:
+  host: localhost
+  port: 5432
+  name: anomaly_detection
+  user: postgres
+  password: postgres
+
+# Spark Configuration
+spark:
+  app_name: "AnomalyDetectionPipeline"
+  master: "local[*]"
+  driver_memory: "4g"
+  executor_memory: "4g"
+  log_level: "WARN"
+
+# Data Paths
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  models: "data/models"
+  anomalies: "data/anomalies"
+  mlflow_tracking: "mlruns"
+
+# Log Generator Configuration
+log_generator:
+  num_logs: 100000
+  anomaly_ratio: 0.05  # 5% anomalies
+  log_types:
+    - "API_REQUEST"
+    - "DATABASE_QUERY"
+    - "USER_ACTION"
+    - "SYSTEM_EVENT"
+    - "ERROR"
+  
+# Feature Engineering
+features:
+  window_sizes: [5, 15, 30, 60]  # minutes
+  statistical_features:
+    - "count"
+    - "mean"
+    - "std"
+    - "min"
+    - "max"
+  text_features:
+    max_features: 100
+    ngram_range: [1, 2]
+
+# Model Configuration
+models:
+  isolation_forest:
+    n_estimators: 100
+    max_samples: 256
+    contamination: 0.05
+    random_state: 42
+  
+  lstm_autoencoder:
+    sequence_length: 50
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.2
+    learning_rate: 0.001
+    batch_size: 32
+    epochs: 20
+  
+  statistical:
+    z_score_threshold: 3.0
+    percentile_threshold: 99.0
+
+# Inference Configuration
+inference:
+  batch_size: 10000
+  anomaly_threshold: 0.5  # Combined score threshold
+  
+# Kafka Configuration (Optional)
+kafka:
+  bootstrap_servers: "localhost:9092"
+  topic: "application-logs"
+  consumer_group: "anomaly-detector"
+  
+# Airflow Configuration (Optional)
+airflow:
+  schedule_interval: "0 2 * * *"  # Daily at 2 AM
+  retries: 3
+  retry_delay_minutes: 5
+
+# Monitoring
+monitoring:
+  enable_mlflow: true
+  log_metrics_interval: 100  # batches
+  model_drift_check_days: 7
