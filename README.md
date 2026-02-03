@@ -1,10 +1,8 @@
 # log-Sentinel
 
-A production-ready anomaly detection pipeline for application logs using PySpark, Scala, and ML models. This system processes streaming log data, detects anomalies using multiple algorithms, and provides actionable insights.
+A production-ready anomaly detection pipeline for application logs using PySpark, Scala, and ML models. This system processes streaming log data, detects anomalies using multiple algorithms, and provides insights.
 
 ## Project Overview
-
-This project demonstrates an end-to-end data engineering and ML pipeline suitable for detecting anomalies in application logs at scale. It showcases skills relevant to FAANG-level Data Science Engineering positions.
 
 ### Key Features
 - **Batch & Stream Processing**: PySpark for both historical analysis and real-time detection
