@@ -50,17 +50,6 @@ Log Sources → Data Ingestion → Feature Engineering → ML Models → Anomaly
    - **PostgreSQL**: Anomaly metadata and alerts
    - **Model Registry**: MLflow for version control
 
-## 🛠️ Tech Stack
-
-- **Languages**: Python, Scala, SQL
-- **Big Data**: PySpark (batch + structured streaming)
-- **ML/DL**: scikit-learn, PyTorch
-- **Database**: PostgreSQL (or TimescaleDB)
-- **Orchestration**: Apache Airflow (optional)
-- **Streaming**: Kafka (simplified, optional)
-- **Containerization**: Docker
-- **Monitoring**: MLflow
-
 ## Dataset
 
 We use a realistic synthetic dataset that simulates application logs with:
@@ -181,8 +170,3 @@ log-Sentinel/
 - **F1-Score**: ~81%
 
 ---
-
-**Author**: [Your Name]
-**Contact**: [Your Email]
-**LinkedIn**: [Your LinkedIn]
-**GitHub**: [Your GitHub]
