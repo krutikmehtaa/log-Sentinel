@@ -2,7 +2,7 @@
 
 A production-ready anomaly detection pipeline for application logs using PySpark, Scala, and ML models. This system processes streaming log data, detects anomalies using multiple algorithms, and provides actionable insights.
 
-## 🎯 Project Overview
+## Project Overview
 
 This project demonstrates an end-to-end data engineering and ML pipeline suitable for detecting anomalies in application logs at scale. It showcases skills relevant to FAANG-level Data Science Engineering positions.
 
@@ -13,7 +13,7 @@ This project demonstrates an end-to-end data engineering and ML pipeline suitabl
 - **Production-Ready**: Includes monitoring, testing, and orchestration
 - **Hybrid Storage**: PostgreSQL for metadata, Parquet for data lake
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 Log Sources → Data Ingestion → Feature Engineering → ML Models → Anomaly Storage → Alerting
@@ -61,7 +61,7 @@ Log Sources → Data Ingestion → Feature Engineering → ML Models → Anomaly
 - **Containerization**: Docker
 - **Monitoring**: MLflow
 
-## 📊 Dataset
+## Dataset
 
 We use a realistic synthetic dataset that simulates application logs with:
 - Normal patterns (API requests, database queries, user actions)
@@ -70,7 +70,7 @@ We use a realistic synthetic dataset that simulates application logs with:
 
 **Dataset Size**: ~1M log entries (can be scaled)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 ```bash
@@ -139,15 +139,10 @@ docker-compose up -d airflow
 # username: admin, password: admin
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-anomaly-detection-system/
-├── data/
-│   ├── raw/                 # Raw log files (Parquet)
-│   ├── processed/           # Feature-engineered data
-│   ├── models/              # Trained models
-│   └── anomalies/           # Detected anomalies
+log-Sentinel/
 ├── src/
 │   ├── ingestion/
 │   │   ├── log_generator.py        # Synthetic log creation
@@ -168,61 +163,22 @@ anomaly-detection-system/
 ├── airflow/
 │   └── dags/
 │       └── anomaly_detection_dag.py
-├── tests/
-├── notebooks/               # Jupyter notebooks for EDA
+├── notebooks/             
 ├── config/
 │   └── config.yaml
 ├── docker-compose.yml
+├── quickstart.sh
 ├── requirements.txt
 └── README.md
 ```
 
-## 🎓 Key Learnings & Interview Talking Points
-
-1. **Why Isolation Forest + LSTM?**
-   - IF excels at detecting point anomalies
-   - LSTM catches sequential/temporal anomalies
-   - Ensemble approach reduces false positives
-
-2. **Handling Data Skew**
-   - Implemented salting for hot keys
-   - Used broadcast joins for small lookup tables
-   - Partitioned by timestamp for time-series data
-
-3. **Production Considerations**
-   - Model versioning with MLflow
-   - Data quality checks at each pipeline stage
-   - Monitoring for data drift and model degradation
-   - Graceful degradation (fallback to statistical methods)
-
-4. **Scalability**
-   - Designed for horizontal scaling (add Spark workers)
-   - Stateless processing for easy parallelization
-   - Incremental model updates vs. full retraining
-
-## 📈 Performance Metrics
+## Performance Metrics
 
 - **Throughput**: 10K+ logs/second (streaming mode)
 - **Latency**: <500ms end-to-end (real-time detection)
 - **Precision**: ~85% (tunable based on threshold)
 - **Recall**: ~78%
 - **F1-Score**: ~81%
-
-## 🔄 Future Enhancements
-
-- [ ] Add Kafka for true real-time streaming
-- [ ] Implement model A/B testing framework
-- [ ] Add Grafana dashboards for monitoring
-- [ ] Multi-variate time-series forecasting
-- [ ] Auto-remediation based on anomaly type
-
-## 📝 License
-
-MIT License
-
-## 🤝 Contributing
-
-This is a portfolio project, but suggestions welcome!
 
 ---
 
